@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masjid Baiturrahman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --hijau: #116b4b;
+            --hijau-gelap: #084b35;
+            --hijau-muda: #eaf5ef;
+            --putih: #ffffff;
+            --teks: #26352d;
+            --abu: #66736b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f9f7;
+            color: var(--teks);
+            line-height: 1.7;
+        }
+
+        header {
+            background: var(--hijau-gelap);
+            color: var(--putih);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px #00000018;
+        }
+
+        .navbar {
+            max-width: 1150px;
+            margin: auto;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        nav {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #c6f0d8;
+        }
+
+        .hero {
+            min-height: 440px;
+            padding: 90px 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(#063d2ed9, #063d2eb8),
+                url("masjid utama.jpg") center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 350px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .tombol {
+            display: inline-block;
+            background: var(--hijau);
+            color: white;
+            text-decoration: none;
+            border: none;
+            padding: 11px 22px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .tombol:hover {
+            background: var(--hijau-gelap);
+        }
+
+        .hero .tombol {
+            background: white;
+            color: var(--hijau-gelap);
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1150px;
+            margin: auto;
+            padding: 65px 22px;
+        }
+
+        .judul-bagian {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .judul-bagian h2,
+        .container > h2 {
+            color: var(--hijau-gelap);
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .deskripsi {
+            color: var(--abu);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .tentang-box {
+            background: white;
+            padding: 28px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px #00000008;
+        }
+
+        .kegiatan-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 25px;
+        }
+
+        .kartu {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000010;
+            transition: transform 0.2s;
+        }
+
+        .kartu:hover {
+            transform: translateY(-4px);
+        }
+
+        .kartu img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+            background: #e5eae6;
+        }
+
+        .kartu h3 {
+            color: var(--hijau-gelap);
+            padding: 16px 18px 4px;
+        }
+
+        .kartu p {
+            padding: 0 18px 20px;
+            color: var(--abu);
+            font-size: 14px;
+        }
+
+        #jadwal {
+            background: var(--hijau-muda);
+            max-width: none;
+        }
+
+        .jadwal-dalam {
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        .jadwal-grid {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 16px;
+            margin-top: 28px;
+        }
+
+        .kartu-jadwal {
+            background: white;
+            padding: 22px 10px;
+            border-radius: 12px;
+            text-align: center;
+            border-bottom: 4px solid var(--hijau);
+            box-shadow: 0 4px 12px #00000008;
+        }
+
+        .kartu-jadwal h3 {
+            color: var(--hijau);
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .kartu-jadwal p {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        #tanggalJadwal,
+        #statusJadwal {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        #statusJadwal {
+            color: var(--abu);
+            font-size: 14px;
+        }
+
+        .kontak-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .kontak-info,
+        .form-kontak {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px #00000008;
+        }
+
+        .form-kontak label {
+            display: block;
+            margin: 12px 0 5px;
+            font-weight: bold;
+        }
+
+        .form-kontak input,
+        .form-kontak textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5ce;
+            border-radius: 6px;
+            font: inherit;
+        }
+
+        .form-kontak textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        #hasilPesan {
+            margin-top: 12px;
+            color: var(--hijau);
+        }
+
+        footer {
+            text-align: center;
+            background: var(--hijau-gelap);
+            color: white;
+            padding: 22px;
+        }
+
+        @media (max-width: 800px) {
+            .navbar {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .kegiatan-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .jadwal-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+            .kontak-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .logo {
+                font-size: 19px;
+            }
+
+            nav {
+                gap: 12px;
+            }
+
+            nav a {
+                font-size: 13px;
+            }
+
+            .kegiatan-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .jadwal-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .kartu img {
+                height: 220px;
+            }
+
+            .container {
+                padding: 45px 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGASI -->
+    <header>
+        <div class="navbar">
+            <div class="logo">Masjid Baiturrahman</div>
+
+            <nav>
+
+<a href="#jadwal-surah">Bacaan Magrib</a>
+<a href="#dalil-salat">Keutamaan Salat</a>
+                <a href="#beranda">Beranda</a>
+                <a href="#tentang">Tentang</a>
+                <a href="#jadwal">Jadwal Salat</a>
+                <a href="#kegiatan">Kegiatan</a>
+                <a href="#kontak">Kontak</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BERANDA -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <h1>Selamat Datang di Masjid Baiturrahman</h1>
+            <p>
+                Pusat ibadah, pembelajaran Al-Qur'an, silaturahmi,
+                dan kemaslahatan umat di Tuah Madani, Pekanbaru, Riau.
+            </p>
+            <a class="tombol" href="#jadwal">Lihat Jadwal Salat</a>
+        </div>
+    </section>
+
+    <!-- TENTANG MASJID -->
+<!-- PROFIL IMAM TETAP -->
+<section id="imam" class="bagian-imam">
+    <div class="judul-bagian">
+        <h2>Imam Tetap Masjid</h2>
+        <p>Mengenal imam yang memimpin ibadah di Masjid Baiturrahman</p>
+    </div>
+
+    <div class="kartu-imam">
+        <div class="foto-imam">
+            <img src="imam.jpg"
+                 width="300" height="330"
+                 alt="Foto Muhammad Husni Hidayat, Imam Tetap Masjid Baiturrahman">
+        </div>
+
+        <div class="info-imam">
+            <span class="label-imam">IMAM TETAP</span>
+            <h3>Muhammad Husni Hidayat</h3>
+            <p class="jabatan-imam">Imam Tetap Masjid Baiturrahman</p>
+
+            <div class="garis-imam"></div>
+
+            <p>
+                Bertugas memimpin pelaksanaan salat berjamaah serta
+                berkontribusi dalam menjaga kegiatan ibadah dan kehidupan
+                keagamaan di lingkungan Masjid Baiturrahman.
+            </p>
+        </div>
+    </div>
+</section>
+    <section class="container" id="tentang">
+        <div class="judul-bagian">
+            <h2>Tentang Masjid</h2>
+            <p class="deskripsi">
+                Tempat ibadah dan kegiatan masyarakat
+            </p>
+        </div>
+
+        <div class="tentang-box">
+            <p>
+                Masjid Baiturrahman merupakan pusat ibadah dan kegiatan keislaman yang berlokasi di Perumahan Surya Graha, Kelurahan Sidomulyo Barat, Kecamatan Tuah Madani, Kota Pekanbaru, Riau. Masjid ini hadir sebagai tempat bagi umat Islam untuk melaksanakan ibadah, memperdalam ilmu agama, serta mempererat tali silaturahmi dan ukhuwah Islamiyah antarjamaah.
+            </p>
+            <br>
+            <p>
+                Sebagai bagian dari kehidupan masyarakat, Masjid Baiturrahman tidak hanya berfungsi sebagai tempat pelaksanaan salat berjamaah, tetapi juga menjadi wadah pembinaan keagamaan dan pengembangan kecintaan terhadap Al-Qur’an. Berbagai kegiatan dilaksanakan untuk mendorong jamaah agar senantiasa mendekatkan diri kepada Allah SWT serta menjadikan nilai-nilai Islam sebagai pedoman dalam kehidupan sehari-hari.
+            </p>
+            <p><br>Salah satu kegiatan yang dilaksanakan adalah pembelajaran tilawah Al-Qur’an setiap hari Kamis, Jumat, dan Sabtu setelah salat Isya. Kegiatan ini menjadi sarana bagi jamaah untuk mempelajari dan meningkatkan kemampuan membaca Al-Qur’an dengan baik, memperbaiki kualitas bacaan, serta menumbuhkan kecintaan terhadap kalam Allah SWT. Selain itu, kegiatan pendidikan Al-Qur’an juga menjadi bagian dari upaya membangun generasi yang dekat dengan Al-Qur’an.</p>
+            <p><br>Masjid Baiturrahman juga menyelenggarakan kegiatan dalam rangka memperingati hari-hari besar Islam, seperti Tahun Baru Islam, Maulid Nabi Muhammad SAW, dan peringatan Isra Mikraj. Kegiatan tersebut menjadi momentum untuk meningkatkan pemahaman keislaman, meneladani akhlak Rasulullah SAW, serta memperkuat kebersamaan dan kepedulian antarjamaah.</p>
+            <p><br>Melalui berbagai kegiatan ibadah, pendidikan Al-Qur’an, dan aktivitas kemasyarakatan, Masjid Baiturrahman berupaya menjadi masjid yang aktif, terbuka, dan memberikan manfaat bagi masyarakat sekitar. Dengan semangat kebersamaan dan nilai-nilai keislaman, Masjid Baiturrahman diharapkan dapat terus berperan dalam membangun lingkungan yang religius, harmonis, dan berakhlak mulia.</p>
+        </div>
+    </section>
+
+    <!-- JADWAL SALAT -->
+    <section class="container" id="jadwal">
+        <div class="jadwal-dalam">
+            <div class="judul-bagian">
+                <h2>Jadwal Salat</h2>
+                <p class="deskripsi">
+                    Tuah Madani, Pekanbaru, Riau
+                </p>
+            </div>
+
+            <p id="tanggalJadwal">Memuat tanggal...</p>
+            <p id="statusJadwal">Mengambil jadwal salat...</p>
+
+            <div class="jadwal-grid">
+                <div class="kartu-jadwal">
+                    <h3>Subuh</h3>
+                    <p id="subuh">--:--</p>
+                </div>
+
+                <div class="kartu-jadwal">
+                    <h3>Zuhur</h3>
+                    <p id="zuhur">--:--</p>
+                </div>
+
+                <div class="kartu-jadwal">
+                    <h3>Asar</h3>
+                    <p id="asar">--:--</p>
+                </div>
+
+                <div class="kartu-jadwal">
+                    <h3>Magrib</h3>
+                    <p id="magrib">--:--</p>
+                </div>
+
+                <div class="kartu-jadwal">
+                    <h3>Isya</h3>
+                    <p id="isya">--:--</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KEGIATAN MASJID -->
+    <section class="container" id="kegiatan">
+        <div class="judul-bagian">
+            <h2>Kegiatan Masjid</h2>
+            <p class="deskripsi">
+                Dokumentasi kegiatan Masjid Baiturrahman
+            </p>
+        </div>
+
+        <div class="kegiatan-grid" id="daftarKegiatan"></div>
+    </section>
+<!-- PENGUMUMAN MASJID -->
+<section id="pengumuman" class="bagian-pengumuman">
+    <div class="judul-bagian">
+        <h2>Pengumuman Masjid</h2>
+        <p>Informasi dan agenda Masjid Baiturrahman</p>
+    </div>
+
+    <div class="pengumuman-grid">
+
+        <article class="kartu-pengumuman">
+            <span class="kategori-pengumuman">KEGIATAN</span>
+            <h3>Jadwal Kajian</h3>
+            <p>
+                Informasi jadwal kajian akan diumumkan melalui
+                pengurus Masjid Baiturrahman.
+            </p>
+            <span class="tanggal-pengumuman">Informasi Masjid</span>
+        </article>
+
+        <article class="kartu-pengumuman">
+            <span class="kategori-pengumuman">KEMASYARAKATAN</span>
+            <h3>Gotong Royong</h3>
+            <p>
+                Informasi kegiatan gotong royong dan kebersihan
+                masjid dapat diperbarui pada bagian ini.
+            </p>
+            <span class="tanggal-pengumuman">Informasi Masjid</span>
+        </article>
+
+        <article class="kartu-pengumuman">
+            <span class="kategori-pengumuman">AGENDA</span>
+            <h3>Informasi Kegiatan</h3>
+            <p>
+                Pengumuman kegiatan keagamaan dan agenda
+                Masjid Baiturrahman lainnya.
+            </p>
+            <span class="tanggal-pengumuman">Informasi Masjid</span>
+        </article>
+
+    </div>
+</section>
+<!-- JADWAL BACAAN SURAH MAGRIB -->
+<section id="jadwal-surah" class="bagian-surah">
+    <div class="judul-bagian">
+        <h2>Jadwal Bacaan Surah Magrib</h2>
+        <p>
+            Jadwal bacaan surah pendek dalam salat Magrib
+            berjamaah di Masjid Baiturrahman.
+        </p>
+    </div>
+
+    <div class="surah-highlight">
+        <span class="surah-label">JADWAL IMAM</span>
+        <h3>Bacaan Surah Salat Magrib</h3>
+        <p>
+            Surah pertama mengikuti jadwal harian,
+            dilanjutkan dengan Surah Al-Ikhlas.
+        </p>
+    </div>
+
+    <div class="tabel-surah-wrapper">
+        <table class="tabel-surah">
+            <thead>
+                <tr>
+                    <th>Hari</th>
+                    <th>Rakaat Pertama</th>
+                    <th>Rakaat Kedua</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>Senin</td><td>Al-Fil</td><td>Al-Ikhlas</td></tr>
+                <tr><td>Selasa</td><td>Al-Quraisy</td><td>Al-Ikhlas</td></tr>
+                <tr><td>Rabu</td><td>Al-Ma'un</td><td>Al-Ikhlas</td></tr>
+                <tr><td>Kamis</td><td>Al-Kautsar</td><td>Al-Ikhlas</td></tr>
+                <tr><td>Jumat</td><td>Al-Kafirun</td><td>Al-Ikhlas</td></tr>
+                <tr><td>Sabtu</td><td>An-Nasr</td><td>Al-Ikhlas</td></tr>
+                <tr><td>Ahad</td><td>Al-Masad (Al-Lahab)</td><td>Al-Ikhlas</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p class="catatan-surah">
+        Catatan: Jadwal ini merupakan panduan bacaan imam,
+        bukan ketentuan wajib dalam salat Magrib.
+    </p>
+</section>
+<!-- DALIL KEUTAMAAN SALAT -->
+<section id="dalil-salat" class="bagian-dalil">
+    <div class="judul-bagian">
+        <h2>Keutamaan Salat</h2>
+        <p>
+            Ayat Al-Qur'an dan hadis tentang pentingnya
+            menjaga salat dalam kehidupan seorang Muslim.
+        </p>
+    </div>
+
+    <div class="dalil-grid">
+
+        <article class="kartu-dalil">
+            <span class="dalil-kategori">AL-QUR'AN</span>
+            <h3>1. Salat adalah kewajiban pada waktunya</h3>
+
+            <p class="teks-arab" dir="rtl">
+                إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا
+            </p>
+
+            <p class="terjemahan-dalil">
+                "Sesungguhnya salat itu merupakan kewajiban
+                yang waktunya telah ditentukan atas orang-orang
+                yang beriman."
+            </p>
+
+            <p class="sumber-dalil">
+                QS. An-Nisa' [4]: 103
+            </p>
+        </article>
+
+        <article class="kartu-dalil">
+            <span class="dalil-kategori">AL-QUR'AN</span>
+            <h3>2. Salat mencegah perbuatan keji dan mungkar</h3>
+
+            <p class="teks-arab" dir="rtl">
+                إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنْكَرِ
+            </p>
+
+            <p class="terjemahan-dalil">
+                "Sesungguhnya salat itu mencegah dari
+                (perbuatan-perbuatan) keji dan mungkar."
+            </p>
+
+            <p class="sumber-dalil">
+                QS. Al-'Ankabut [29]: 45
+            </p>
+        </article>
+
+        <article class="kartu-dalil">
+            <span class="dalil-kategori">HADIS SAHIH</span>
+            <h3>3. Salat lima waktu menghapus kesalahan</h3>
+
+            <p class="terjemahan-dalil">
+                Rasulullah ﷺ mengumpamakan salat lima waktu
+                seperti sungai di depan rumah yang digunakan
+                untuk mandi lima kali sehari; tidak tersisa
+                kotoran pada tubuhnya. Demikian pula Allah
+                menghapus kesalahan melalui salat lima waktu.
+            </p>
+
+            <p class="sumber-dalil">
+                HR. Sahih al-Bukhari no. 528
+            </p>
+        </article>
+
+        <article class="kartu-dalil">
+            <span class="dalil-kategori">AL-QUR'AN</span>
+            <h3>4. Jagalah seluruh salat</h3>
+
+            <p class="teks-arab" dir="rtl">
+                حَافِظُوا عَلَى الصَّلَوَاتِ وَالصَّلَاةِ الْوُسْطَىٰ
+            </p>
+
+            <p class="terjemahan-dalil">
+                "Peliharalah semua salat dan salat wusta.
+                Laksanakanlah salat karena Allah dengan khusyuk."
+            </p>
+
+            <p class="sumber-dalil">
+                QS. Al-Baqarah [2]: 238
+            </p>
+        </article>
+
+    </div>
+
+    <p class="catatan-dalil">
+        Sumber Al-Qur'an dan hadis dicantumkan untuk membantu
+        jamaah mempelajari dalil lebih lanjut.
+    </p>
+</section>
+
+    <!-- KONTAK -->
+    <section class="container" id="kontak">
+        <div class="judul-bagian">
+            <h2>Kontak</h2>
+            <p class="deskripsi">
+                Informasi dan pesan untuk pengurus masjid
+            </p>
+        </div>
+
+        <div class="kontak-grid">
+            <div class="kontak-info">
+                <h3>Masjid Baiturrahman</h3>
+                <p>Lokasi: Tuah Madani, Pekanbaru, Riau</p>
+                <p>
+                    Silakan hubungi pengurus masjid secara langsung
+                    untuk informasi kegiatan dan layanan masjid.
+                </p>
+            </div>
+
+            <form class="form-kontak" id="formKontak">
+                <h3>Kirim Pesan</h3>
+
+                <label for="nama">Nama</label>
+                <input
+                    type="text"
+                    id="nama"
+                    name="nama"
+                    placeholder="Masukkan nama"
+                    required
+                >
+
+                <label for="pesan">Pesan</label>
+                <textarea
+                    id="pesan"
+                    name="pesan"
+                    placeholder="Tulis pesan kamu"
+                    required
+                ></textarea>
+
+                <button class="tombol" type="submit">
+                    Kirim Pesan
+                </button>
+
+                <p id="hasilPesan"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="tahun"></span> Masjid Baiturrahman.
+            Seluruh hak cipta dilindungi.
+        </p>
+    </footer>
+
+    <script>
+        // ============================================
+        // 1. TAHUN OTOMATIS
+        // ============================================
+        const tahun = document.getElementById("tahun");
+        tahun.textContent = new Date().getFullYear();
+
+
+        // ============================================
+        // 2. KEGIATAN MASJID MENGGUNAKAN FOTO
+        // ============================================
+        const kegiatanMasjid = [
+            {
+                gambar: "tpq baiturrahman.jpg",
+                judul: "Belajar tilawah al-qur'an",
+                deskripsi:
+                    "Membina anak-anak agar mengenal ajaran Islam, " +
+                    "membiasakan ibadah, dan belajar agama sejak dini."
+            },
+            {
+                gambar: "silaturrahmi DKM.jpg",
+                judul: "Silaturahmi DKM",
+                deskripsi:
+                    "Mempererat silaturahmi antar pengurus dan jamaah " +
+                    "Masjid Baiturrahman."
+            },
+            {
+                gambar: "rapat kemaslahatan ummat.jpg",
+                judul: "Kemaslahatan Umat",
+                deskripsi:
+                    "Membahas kegiatan dan kepentingan umat demi " +
+                    "mendukung kemakmuran masjid."
+            }
+        ];
+
+        function tampilkanKegiatan() {
+            const daftar = document.getElementById("daftarKegiatan");
+            daftar.innerHTML = "";
+
+            kegiatanMasjid.forEach(function (kegiatan) {
+                const kartu = document.createElement("article");
+                kartu.className = "kartu";
+
+                const gambar = document.createElement("img");
+                gambar.src = kegiatan.gambar;
+                gambar.alt = kegiatan.judul;
+                gambar.loading = "lazy";
+
+                gambar.onerror = function () {
+                    console.error(
+                        "Gambar tidak ditemukan:",
+                        kegiatan.gambar
+                    );
+                    this.style.display = "none";
+                };
+
+                const judul = document.createElement("h3");
+                judul.textContent = kegiatan.judul;
+
+                const deskripsi = document.createElement("p");
+                deskripsi.textContent = kegiatan.deskripsi;
+
+                kartu.append(gambar, judul, deskripsi);
+                daftar.appendChild(kartu);
+            });
+        }
+
+        tampilkanKegiatan();
+
+
+        // ============================================
+        // 3. JADWAL SALAT OTOMATIS
+        // ============================================
+        async function muatJadwalSalat() {
+            const status =
+                document.getElementById("statusJadwal");
+            const tanggal =
+                document.getElementById("tanggalJadwal");
+
+            status.textContent = "Mengambil jadwal salat...";
+
+            try {
+                const bagianTanggal =
+                    new Intl.DateTimeFormat("en-GB", {
+                        timeZone: "Asia/Jakarta",
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric"
+                    }).formatToParts(new Date());
+
+                const bagian = {};
+
+                bagianTanggal.forEach(function (item) {
+                    bagian[item.type] = item.value;
+                });
+
+                const tanggalAPI =
+                    `${bagian.day}-${bagian.month}-${bagian.year}`;
+
+                const url =
+                    "https://api.aladhan.com/v1/timingsByCity/" +
+                    tanggalAPI +
+                    "?city=Pekanbaru&country=Indonesia&method=20";
+
+                const respons = await fetch(url);
+
+                if (!respons.ok) {
+                    throw new Error("HTTP " + respons.status);
+                }
+
+                const hasil = await respons.json();
+
+                if (
+                    hasil.code !== 200 ||
+                    !hasil.data ||
+                    !hasil.data.timings
+                ) {
+                    throw new Error("Data jadwal tidak tersedia.");
+                }
+
+                const waktu = hasil.data.timings;
+
+                document.getElementById("subuh").textContent =
+                    waktu.Fajr.split(" ")[0];
+
+                document.getElementById("zuhur").textContent =
+                    waktu.Dhuhr.split(" ")[0];
+
+                document.getElementById("asar").textContent =
+                    waktu.Asr.split(" ")[0];
+
+                document.getElementById("magrib").textContent =
+                    waktu.Maghrib.split(" ")[0];
+
+                document.getElementById("isya").textContent =
+                    waktu.Isha.split(" ")[0];
+
+                tanggal.textContent =
+                    "Tanggal: " +
+                    new Intl.DateTimeFormat("id-ID", {
+                        timeZone: "Asia/Jakarta",
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }).format(new Date());
+
+                status.textContent =
+                    "Jadwal salat berhasil diperbarui.";
+
+            } catch (error) {
+                console.error(
+                    "Kesalahan jadwal salat:",
+                    error
+                );
+
+                status.textContent =
+                    "Jadwal gagal dimuat. Periksa koneksi internet.";
+            }
+        }
+
+        // Jalankan ketika halaman siap
+        muatJadwalSalat();
+
+        // Periksa pergantian tanggal berdasarkan WIB
+        function tanggalWIB() {
+            return new Intl.DateTimeFormat("en-CA", {
+                timeZone: "Asia/Jakarta",
+                year: "numeric",
+                month: "2-digit",
+                day: "2-digit"
+            }).format(new Date());
+        }
+
+        let tanggalTerakhir = tanggalWIB();
+
+        setInterval(function () {
+            const hariIni = tanggalWIB();
+
+            if (hariIni !== tanggalTerakhir) {
+                tanggalTerakhir = hariIni;
+                muatJadwalSalat();
+            }
+        }, 60000);
+
+        // ============================================
+        // 4. FORM KONTAK
+        // ============================================
+        const formKontak =
+            document.getElementById("formKontak");
+
+        formKontak.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const nama =
+                document.getElementById("nama").value.trim();
+
+            const pesan =
+                document.getElementById("pesan").value.trim();
+
+            const hasil =
+                document.getElementById("hasilPesan");
+
+            if (!nama || !pesan) {
+                hasil.textContent =
+                    "Silakan isi nama dan pesan terlebih dahulu.";
+                return;
+            }
+
+            hasil.textContent =
+                "Terima kasih, " + nama +
+                ". Pesan diproses di halaman ini.";
+
+            console.log("Nama pengirim:", nama);
+            console.log("Isi pesan:", pesan);
+
+            formKontak.reset();
+        });
+    </script>
+
+</body>
+</html>
+```
